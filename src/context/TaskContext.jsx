@@ -1,11 +1,10 @@
 import { createContext, useState, useEffect } from "react";
 import { tasks as data } from "../data/task";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 export const TaskContext = createContext();
 
-export function TaskContextProvider({children}) {
-
+export function TaskContextProvider({ children }) {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export function TaskContextProvider({children}) {
   }
 
   return (
-    <TaskContextProvider
+    <TaskContext.Provider
       value={{
         tasks: tasks,
         deleteTask: deleteTask,
@@ -37,10 +36,10 @@ export function TaskContextProvider({children}) {
       }}
     >
       {children}
-    </TaskContextProvider>
+    </TaskContext.Provider>
   );
-};
+}
 
-TaskContext.propTypes = {
-	children: PropTypes.any
+TaskContextProvider.propTypes = {
+  children: PropTypes.any,
 };
